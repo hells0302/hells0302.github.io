@@ -17,8 +17,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittree.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/a1.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/a3.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/a2.jpg">
-<meta property="og:updated_time" content="2017-03-27T13:19:44.413Z">
+<meta property="og:updated_time" content="2017-03-27T14:06:08.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Linux新建Git服务器">
 <meta name="twitter:description" content="这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。正好，在搭建个人博客，就把这个过程贴上来.">
@@ -85,7 +84,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/hells0302" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 		        
@@ -126,7 +125,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/hells0302" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 			        
@@ -179,22 +178,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。正好，在搭建个人博客，就把这个过程贴上来.<br><a id="more"></a></p>
-<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git</div></pre></td></tr></table></figure>
+<p>这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。正好，在搭建个人博客，就把这个过程贴上来.</p>
 </blockquote>
+<a id="more"></a>
+<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git</div></pre></td></tr></table></figure>
 <h4 id="创建一个git用户"><a href="#创建一个git用户" class="headerlink" title="创建一个git用户"></a>创建一个git用户</h4><p>用来运行git服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">useradd -m git</div></pre></td></tr></table></figure></p>
 <h4 id="安装Gitosis管理公钥"><a href="#安装Gitosis管理公钥" class="headerlink" title="安装Gitosis管理公钥"></a>安装Gitosis管理公钥</h4><p>安装命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install -y python python-setuptools git-core</div><div class="line">git clone https://github.com/res0nat0r/gitosis.git</div><div class="line">cd gitosis</div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
 <p>软件安装完之后是一些配置。先用服务器生成的ssh公钥初始化gitosis。然后把远程PC的公钥添加进并添加管理权限，即可在远程pc管理项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa(一路回车即可)</div><div class="line">cp ~/.ssh/id_rsa.pub /tmp/</div></pre></td></tr></table></figure></p>
 <p>用刚才的公钥初始化gitosis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">su git</div><div class="line">gitosis-init&lt;/tmp/id_rsa.pub</div></pre></td></tr></table></figure></p>
-<p>在/home/git文件夹下面会生成gitosis和repositories两个文件夹。repositories即为存放公共库的文件夹。</p>
-<center><img src="/2017/03/27/Create-a-git-server/gittree.jpg" alt="GitTree"></center><br>修改/home/git/repositories/gitosis-admin.git/hooks/post-update权限，使具有执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 775 /home/git/repositories/gitosis-admin.git/hooks/post-update</div></pre></td></tr></table></figure><br><br>然后在git桌面上克隆gitosis-admin<br><center><img src="/2017/03/27/Create-a-git-server/a1.jpg" alt="a1"></center>
-
-<p>然后把PC生成的公钥放到keydir文件夹中，在gitosis.conf中添加管理员权限就可以在PC上远程管理权限和git项目<br>注意：此处公钥的文件名必须改成公钥文件里面最后的用户名，如下图所示的root@cnc217：</p>
-<center><img src="/2017/03/27/Create-a-git-server/a3.jpg" alt="a1"></center>
-
-<center><img src="/2017/03/27/Create-a-git-server/a2.jpg" alt="a1"></center>
-
+<p>在/home/git文件夹下面会生成gitosis和repositories两个文件夹。repositories即为存放公共库的文件夹。<br><img src="/2017/03/27/Create-a-git-server/gittree.jpg" alt="GitTree"><br>修改/home/git/repositories/gitosis-admin.git/hooks/post-update权限，使具有执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 775 /home/git/repositories/gitosis-admin.git/hooks/post-update</div></pre></td></tr></table></figure></p>
+<p>然后在git桌面上克隆gitosis-admin<br><img src="/2017/03/27/Create-a-git-server/a1.jpg" alt="a1"></p>
+<p>然后把PC生成的公钥放到keydir文件夹中，在gitosis.conf中添加管理员权限就可以在PC上远程管理权限和git项目<br>注意：此处公钥的文件名必须改成公钥文件里面最后的用户名，如下图所示的root@cnc217：<br><img src="/2017/03/27/Create-a-git-server/a3.jpg" alt="a1"></p>
 <p>PC具有权限之后，就可以在自己的电脑上管理git项目和权限，如需新添加开发成员，只需把新成员电脑生成的公钥放到gitosis-admin中keydir，在gitosis.conf中在相应的项目中添加新成员即可。</p>
 
       
@@ -287,9 +282,7 @@
     	<div class="footer-left">
     		&copy; 2017 Dnw
     	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+      	
     </div>
   </div>
 </footer>
