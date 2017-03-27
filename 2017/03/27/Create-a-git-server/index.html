@@ -16,8 +16,8 @@
 <meta property="og:description" content="这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。正好，在搭建个人博客，就把这个过程贴上来.">
 <meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittree.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittreeone.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittree2.jpg">
-<meta property="og:updated_time" content="2017-03-27T14:21:07.788Z">
+<meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittreetwo.jpg">
+<meta property="og:updated_time" content="2017-03-27T14:23:48.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Linux新建Git服务器">
 <meta name="twitter:description" content="这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。正好，在搭建个人博客，就把这个过程贴上来.">
@@ -189,7 +189,7 @@
 <p>用刚才的公钥初始化gitosis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">su git</div><div class="line">gitosis-init&lt;/tmp/id_rsa.pub</div></pre></td></tr></table></figure></p>
 <p>在/home/git文件夹下面会生成gitosis和repositories两个文件夹。repositories即为存放公共库的文件夹。<br><img src="/2017/03/27/Create-a-git-server/gittree.jpg" alt="GitTree"><br>修改/home/git/repositories/gitosis-admin.git/hooks/post-update权限，使具有执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 775 /home/git/repositories/gitosis-admin.git/hooks/post-update</div></pre></td></tr></table></figure></p>
 <p>然后在git桌面上克隆gitosis-admin<br><img src="/2017/03/27/Create-a-git-server/gittreeone.jpg" alt="img1"></p>
-<p>然后把PC生成的公钥放到keydir文件夹中，在gitosis.conf中添加管理员权限就可以在PC上远程管理权限和git项目<br>注意：此处公钥的文件名必须改成公钥文件里面最后的用户名，如下图所示的root@cnc217：<br><img src="/2017/03/27/Create-a-git-server/gittree2.jpg" alt="img2"></p>
+<p>然后把PC生成的公钥放到keydir文件夹中，在gitosis.conf中添加管理员权限就可以在PC上远程管理权限和git项目<br>注意：此处公钥的文件名必须改成公钥文件里面最后的用户名，如下图所示的root@cnc217：<br><img src="/2017/03/27/Create-a-git-server/gittreetwo.jpg" alt="img2"></p>
 <p>PC具有权限之后，就可以在自己的电脑上管理git项目和权限，如需新添加开发成员，只需把新成员电脑生成的公钥放到gitosis-admin中keydir，在gitosis.conf中在相应的项目中添加新成员即可。</p>
 
       
