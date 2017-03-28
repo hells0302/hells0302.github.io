@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: Linux | hells0302</title>
+  <title>Java实现链式存储线性表 | hells0302</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="hells0302">
-<meta property="og:url" content="http://yoursite.com/categories/Linux/index.html">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788public class Test &amp;#123;	int get">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java实现链式存储线性表">
+<meta property="og:url" content="http://yoursite.com/2017/03/28/linked-list/index.html">
 <meta property="og:site_name" content="hells0302">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788public class Test &amp;#123;	int get">
+<meta property="og:updated_time" content="2017-03-28T08:30:58.671Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hells0302">
+<meta name="twitter:title" content="Java实现链式存储线性表">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788public class Test &amp;#123;	int get">
   
     <link rel="alternative" href="/atom.xml" title="hells0302" type="application/atom+xml">
   
@@ -147,71 +151,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-linked-list" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/27/Create-a-git-server/" class="archive-article-date">
-  	<time datetime="2017-03-27T08:10:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/27/Create-a-git-server/">在Linux新建Git服务器</a>
+    <h1 class="article-title" itemprop="name">
+      Java实现链式存储线性表
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/28/linked-list/" class="archive-article-date">
+  	<time datetime="2017-03-28T08:21:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">public class Test &#123;</div><div class="line">	int getData=0;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		//初始化链表</div><div class="line">				Node node1=new Node();</div><div class="line">				node1.data=1;</div><div class="line">				Node node2=new Node();</div><div class="line">				node1.next=node2;</div><div class="line">				node2.data=2;</div><div class="line">				node2.next=null;</div><div class="line">				//定义一个头指针指向第一个节点</div><div class="line">				Node p=new Node();</div><div class="line">				p.next=node1;	</div><div class="line">				Test test=new Test();</div><div class="line">				if(test.get(p, 1))</div><div class="line">					System.out.println(test.getData);</div><div class="line">				test.insert(p, 2, 3);</div><div class="line">				while(p!=null)</div><div class="line">				&#123;</div><div class="line">					System.out.print(&quot; &quot;+p.data);</div><div class="line">					p=p.next;</div><div class="line">				&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public boolean get(Node node,int num)</div><div class="line">	&#123;</div><div class="line">		int i=1;</div><div class="line">		Node pNode;</div><div class="line">		pNode=node.next;</div><div class="line">		while(pNode!=null&amp;&amp;i&lt;num)</div><div class="line">		&#123;</div><div class="line">			pNode=pNode.next;</div><div class="line">			i++;</div><div class="line">		&#125;</div><div class="line">		if(pNode==null||i&gt;num)</div><div class="line">			return false;</div><div class="line">		getData=pNode.data;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	public boolean insert(Node node,int num,int item)</div><div class="line">	&#123;</div><div class="line">		int i=1;</div><div class="line">		Node pNode=node.next;</div><div class="line">		while(pNode!=null&amp;&amp;i&lt;num)</div><div class="line">		&#123;</div><div class="line">			pNode=pNode.next;</div><div class="line">			i++;</div><div class="line">		&#125;</div><div class="line">		if(pNode==null||i&gt;num)</div><div class="line">		&#123;</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">		Node sNode=new Node();</div><div class="line">		sNode.data=item;</div><div class="line">		sNode.next=pNode.next;</div><div class="line">		pNode.next=sNode;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	public boolean delete(Node node,int num)</div><div class="line">	&#123;</div><div class="line">		int i=1;</div><div class="line">		Node pNode=node.next;</div><div class="line">		while(pNode!=null&amp;&amp;i&lt;num)</div><div class="line">		&#123;</div><div class="line">			pNode=pNode.next;</div><div class="line">			i++;</div><div class="line">		&#125;</div><div class="line">		if(pNode==null||i&gt;num)</div><div class="line">		&#123;</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">		Node sNode=pNode.next;</div><div class="line">		pNode.next=sNode.next;</div><div class="line">		</div><div class="line">		</div><div class="line">	</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">class Node</div><div class="line">&#123;</div><div class="line">	 int data;</div><div class="line">	 Node next;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux/" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/数据结构/" class="article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/28/linked-list/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/03/28/array-list/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          array list
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/03/28/KMP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">KMP匹配模式算法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
+  
+  <div class="yungentie">
+	<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+	<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+	<script>
+	var cloudTieConfig = {
+	  url: document.location.href, 
+	  sourceId: "",
+	  productKey: "d2bd391a6b414aebad2ef22bc5e35a96",
+	  target: "cloud-tie-wrapper"
+	};
+	var yunManualLoad = true;
+	Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+	</script>
+</div>
+
+  
+
 
 
           </div>
@@ -232,10 +332,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
