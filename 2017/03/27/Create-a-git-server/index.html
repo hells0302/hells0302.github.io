@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittree.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittreeone.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gitone.jpg">
-<meta property="og:updated_time" content="2017-03-27T14:55:53.941Z">
+<meta property="og:updated_time" content="2017-03-28T01:44:11.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Linux新建Git服务器">
 <meta name="twitter:description" content="这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。正好，在搭建个人博客，就把这个过程贴上来.">
@@ -62,7 +62,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/">随笔</a></li>
+				<li><a href="/categories/essay/">随笔</a></li>
+	        
+				<li><a href="/categories/Linux/">Linux</a></li>
 	        
 			</ul>
 		</nav>
@@ -86,11 +88,7 @@
 				
 					<a class="github" target="_blank" href="https://github.com/hells0302" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
 					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -120,6 +118,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -127,22 +127,20 @@
 					
 						<a class="github" target="_blank" href="https://github.com/hells0302" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
 						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories/essay/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories/Linux/">Linux</a></li>
 		        
 				</ul>
 			</nav>
@@ -203,7 +201,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux/" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -359,6 +379,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
