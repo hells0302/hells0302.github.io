@@ -6,18 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java顺序存储实现线性表 | hells0302</title>
+  <title>Category: datastructure | hells0302</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="顺序存储实现线性表">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java顺序存储实现线性表">
-<meta property="og:url" content="http://yoursite.com/2017/03/28/array-list/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="hells0302">
+<meta property="og:url" content="http://yoursite.com/categories/datastructure/index.html">
 <meta property="og:site_name" content="hells0302">
-<meta property="og:description" content="顺序存储实现线性表">
-<meta property="og:updated_time" content="2017-03-28T08:54:16.998Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java顺序存储实现线性表">
-<meta name="twitter:description" content="顺序存储实现线性表">
+<meta name="twitter:title" content="hells0302">
   
     <link rel="alternative" href="/atom.xml" title="hells0302" type="application/atom+xml">
   
@@ -151,35 +147,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-array-list" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Java顺序存储实现线性表
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/28/array-list/" class="archive-article-date">
+  	<time datetime="2017-03-28T08:21:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/28/array-list/">Java顺序存储实现线性表</a>
     </h1>
   
 
-        
-        <a href="/2017/03/28/array-list/" class="archive-article-date">
-  	<time datetime="2017-03-28T08:21:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>顺序存储实现线性表<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line">public class test &#123;</div><div class="line">	//线性表的长度</div><div class="line">	private static final int MAXSIZE=20;</div><div class="line">	//线性表数据</div><div class="line">	int getData=0;</div><div class="line">	//线性表长度</div><div class="line">	int length=0;</div><div class="line">	</div><div class="line">	public static void  main(String args[]) &#123;</div><div class="line">		int arr[]=new int[MAXSIZE];</div><div class="line">		test test1=new test();</div><div class="line">		for(int i=0;i&lt;4;i++)</div><div class="line">		&#123;</div><div class="line">			arr[i]=i+1;</div><div class="line">			test1.length++;</div><div class="line">		&#125;</div><div class="line">		test1.insert(arr, 3, 5);</div><div class="line">		</div><div class="line">		</div><div class="line">		if(test1.get(arr, 3))</div><div class="line">		&#123;</div><div class="line">			System.out.println(test1.getData+&quot;&quot;);</div><div class="line">		&#125;</div><div class="line">		test1.delete(arr, 3);</div><div class="line">		</div><div class="line">		if(test1.get(arr, 3))</div><div class="line">		&#123;</div><div class="line">			System.out.println(test1.getData+&quot;&quot;);</div><div class="line">		&#125;</div><div class="line">		test1.get(arr, 2);</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public boolean get(int[] arr,int num)</div><div class="line">	&#123;</div><div class="line">		if(length==0||num&lt;1||num&gt;length+1)</div><div class="line">			return false;</div><div class="line">		getData=arr[num-1];</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public boolean insert(int[] arr,int num,int elem)</div><div class="line">	&#123;</div><div class="line">		int i=0;</div><div class="line">		if(num&lt;1||num&gt;length+1)</div><div class="line">			return false;</div><div class="line">		//如果线性表已满</div><div class="line">		if(length==arr.length)</div><div class="line">			return false;</div><div class="line">		//如果不是表尾，将要插入位置后的数据后移一位</div><div class="line">		if(num&lt;=length)</div><div class="line">		&#123;</div><div class="line">			for(i=length-1;i&gt;=num-1;i--)</div><div class="line">			&#123;</div><div class="line">				arr[i+1]=arr[i];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		arr[num-1]=elem;</div><div class="line">		length++;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	public boolean delete(int []arr,int num)</div><div class="line">	&#123;</div><div class="line">		if(length==0||num&lt;1||num&gt;length+1)</div><div class="line">		&#123;</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">		getData=arr[num-1];</div><div class="line">		if(num&lt;length)</div><div class="line">		&#123;</div><div class="line">			for(int k=num;k&lt;length;k++)</div><div class="line">			&#123;</div><div class="line">				arr[k-1]=arr[k];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		length--;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,7 +188,7 @@
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -204,104 +201,115 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/28/array-list/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/28/linked-list/" class="archive-article-date">
+  	<time datetime="2017-03-28T08:21:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
+</a>
+        </div>
+    	 
   
-  
-    <a href="/2017/03/28/linked-list/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java实现链式存储线性表</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/28/linked-list/">Java实现链式存储线性表</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/datastructure/" class="article-tag-list-link color4">datastructure</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
-  <div class="yungentie">
-	<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-	<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-	<script>
-	var cloudTieConfig = {
-	  url: document.location.href, 
-	  sourceId: "",
-	  productKey: "d2bd391a6b414aebad2ef22bc5e35a96",
-	  target: "cloud-tie-wrapper"
-	};
-	var yunManualLoad = true;
-	Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
-	</script>
-</div>
-
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/28/KMP/" class="archive-article-date">
+  	<time datetime="2017-03-28T08:06:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/28/KMP/">KMP匹配模式算法</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/datastructure/" class="article-tag-list-link color4">datastructure</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -322,10 +330,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
