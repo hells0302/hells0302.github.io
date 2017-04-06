@@ -6,22 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>在Linux新建Git服务器 | hells0302</title>
+  <title>Archives: 2016 | hells0302</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。把这个过程贴上来，方便以后查看。CentOS的安装就不在多说。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="在Linux新建Git服务器">
-<meta property="og:url" content="http://yoursite.com/2017/03/27/Create-a-git-server/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="hells0302">
+<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
 <meta property="og:site_name" content="hells0302">
-<meta property="og:description" content="这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。把这个过程贴上来，方便以后查看。CentOS的安装就不在多说。">
-<meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittree.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittreeone.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gitone.jpg">
-<meta property="og:updated_time" content="2017-04-06T03:29:11.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在Linux新建Git服务器">
-<meta name="twitter:description" content="这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。把这个过程贴上来，方便以后查看。CentOS的安装就不在多说。">
-<meta name="twitter:image" content="http://yoursite.com/2017/03/27/Create-a-git-server/gittree.jpg">
+<meta name="twitter:title" content="hells0302">
   
     <link rel="alternative" href="/atom.xml" title="hells0302" type="application/atom+xml">
   
@@ -161,184 +153,11 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Create-a-git-server" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      在Linux新建Git服务器
-    </h1>
-  
-
-        
-        <a href="/2017/03/27/Create-a-git-server/" class="archive-article-date">
-  	<time datetime="2017-03-27T08:10:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>这几天导师要求在实验室的服务器上(CentOS)搭建一个Git仓库用于管理实验室项目代码。把这个过程贴上来，方便以后查看。CentOS的安装就不在多说。</p>
-</blockquote>
-<a id="more"></a>
-<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git</div></pre></td></tr></table></figure>
-<h4 id="创建一个git用户"><a href="#创建一个git用户" class="headerlink" title="创建一个git用户"></a>创建一个git用户</h4><p>用来运行git服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">useradd -m git</div></pre></td></tr></table></figure></p>
-<h4 id="安装Gitosis管理公钥"><a href="#安装Gitosis管理公钥" class="headerlink" title="安装Gitosis管理公钥"></a>安装Gitosis管理公钥</h4><p>安装命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install -y python python-setuptools git-core</div><div class="line">git clone https://github.com/res0nat0r/gitosis.git</div><div class="line">cd gitosis</div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
-<p>软件安装完之后是一些配置。先用服务器生成的ssh公钥初始化gitosis。然后把远程PC的公钥添加进并添加管理权限，即可在远程pc管理项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa(一路回车即可)</div><div class="line">cp ~/.ssh/id_rsa.pub /tmp/</div></pre></td></tr></table></figure></p>
-<p>用刚才的公钥初始化gitosis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">su git</div><div class="line">gitosis-init&lt;/tmp/id_rsa.pub</div></pre></td></tr></table></figure></p>
-<p>在/home/git文件夹下面会生成gitosis和repositories两个文件夹。repositories即为存放公共库的文件夹。</p>
-<p><img src="/2017/03/27/Create-a-git-server/gittree.jpg" alt="GitTree"></p>
-<p>修改/home/git/repositories/gitosis-admin.git/hooks/post-update权限，使具有执行权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 775 /home/git/repositories/gitosis-admin.git/hooks/post-update</div></pre></td></tr></table></figure></p>
-<p>然后在git桌面上克隆gitosis-admin</p>
-<p><img src="/2017/03/27/Create-a-git-server/gittreeone.jpg" alt="img1"></p>
-<p>然后把PC生成的公钥放到keydir文件夹中，在gitosis.conf中添加管理员权限就可以在PC上远程管理权限和git项目<br>注意：此处公钥的文件名必须改成公钥文件里面最后的用户名，如下图所示的root@cnc217：</p>
-<p><img src="/2017/03/27/Create-a-git-server/gitone.jpg" alt="img"></p>
-<p>PC具有权限之后，就可以在自己的电脑上管理git项目和权限，如需新添加开发成员，只需把新成员电脑生成的公钥放到gitosis-admin中keydir，在gitosis.conf中在相应的项目中添加新成员即可。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux/" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
+            
+  <div class="widget tag">
+    <h3 class="title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">2017年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">2017年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">2016年10月</a><span class="archive-list-count">1</span></li></ul>
   </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/27/Create-a-git-server/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/03/28/KMP/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          KMP匹配模式算法
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/03/06/update-ui-in-subthread/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android子线程中更新UI的几种方法总结</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
-  
-
-
-  
-  <div class="yungentie">
-	<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-	<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-	<script>
-	var cloudTieConfig = {
-	  url: document.location.href, 
-	  sourceId: "",
-	  productKey: "d2bd391a6b414aebad2ef22bc5e35a96",
-	  target: "cloud-tie-wrapper"
-	};
-	var yunManualLoad = true;
-	Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
-	</script>
-</div>
-
-  
-
-
 
           </div>
         </div>
@@ -358,8 +177,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
