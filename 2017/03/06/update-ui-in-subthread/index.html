@@ -6,23 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>解决Android Studio无法查看源码问题 | hells0302</title>
+  <title>Android子线程中更新UI的几种方法总结 | hells0302</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="解决Android Studio Ctrl+鼠标左键无法查看底层源码的问题。">
+  <meta name="description" content="子线程中更新ui的几种方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决Android Studio无法查看源码问题">
-<meta property="og:url" content="http://yoursite.com/2017/04/06/how-to-see-android-source/index.html">
+<meta property="og:title" content="Android子线程中更新UI的几种方法总结">
+<meta property="og:url" content="http://yoursite.com/2017/03/06/update-ui-in-subthread/index.html">
 <meta property="og:site_name" content="hells0302">
-<meta property="og:description" content="解决Android Studio Ctrl+鼠标左键无法查看底层源码的问题。">
-<meta property="og:image" content="http://yoursite.com/2017/04/06/how-to-see-android-source/pro.JPG">
-<meta property="og:image" content="http://yoursite.com/2017/04/06/how-to-see-android-source/sdkm.JPG">
-<meta property="og:image" content="http://yoursite.com/2017/04/06/how-to-see-android-source/inva.JPG">
-<meta property="og:image" content="http://yoursite.com/2017/04/06/how-to-see-android-source/ok.JPG">
-<meta property="og:updated_time" content="2017-04-06T01:52:59.604Z">
+<meta property="og:description" content="子线程中更新ui的几种方法">
+<meta property="og:updated_time" content="2017-04-06T03:23:40.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决Android Studio无法查看源码问题">
-<meta name="twitter:description" content="解决Android Studio Ctrl+鼠标左键无法查看底层源码的问题。">
-<meta name="twitter:image" content="http://yoursite.com/2017/04/06/how-to-see-android-source/pro.JPG">
+<meta name="twitter:title" content="Android子线程中更新UI的几种方法总结">
+<meta name="twitter:description" content="子线程中更新ui的几种方法">
   
     <link rel="alternative" href="/atom.xml" title="hells0302" type="application/atom+xml">
   
@@ -162,20 +157,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-how-to-see-android-source" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-update-ui-in-subthread" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      解决Android Studio无法查看源码问题
+      Android子线程中更新UI的几种方法总结
     </h1>
   
 
         
-        <a href="/2017/04/06/how-to-see-android-source/" class="archive-article-date">
-  	<time datetime="2017-04-05T17:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-06</time>
+        <a href="/2017/03/06/update-ui-in-subthread/" class="archive-article-date">
+  	<time datetime="2017-03-06T03:05:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
 </a>
         
       </header>
@@ -183,16 +178,23 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>解决Android Studio Ctrl+鼠标左键无法查看底层源码的问题。</p>
+<p>子线程中更新ui的几种方法<br><a id="more"></a></p>
 </blockquote>
-<a id="more"></a>
-<p>如下图所示，在查看消息队列插入消息方法enqueueMessage时，无法查看最底层的实现代码</p>
-<p><img src="/2017/04/06/how-to-see-android-source/pro.JPG" alt="问题"><br></p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ul>
-<li>第一步<br><br>tools-&gt;Android-&gt;SDK manager查看是否下载源码<br><br><img src="/2017/04/06/how-to-see-android-source/sdkm.JPG" alt="查看源码"><br><br>Sources for Android没有安装的话，先安装</li>
-<li>第二步<br><br>Files-&gt;Invalidate Caches And Restart<br><img src="/2017/04/06/how-to-see-android-source/inva.JPG" alt="重启"><br></li>
+<ul>
+<li>handler消息机制</li>
+<li>Handler的post方法</li>
+<li>View的post方法</li>
+<li>Activity的runOnUiThread()方法</li>
 </ul>
-<p>即可以解决无法查看Android源码的问题<br><br><img src="/2017/04/06/how-to-see-android-source/ok.JPG" alt="解决"></p>
+<h2 id="handler消息机制"><a href="#handler消息机制" class="headerlink" title="handler消息机制"></a>handler消息机制</h2><p>具体原理见另一学习笔记</p>
+<h2 id="Handler的post方法"><a href="#Handler的post方法" class="headerlink" title="Handler的post方法"></a>Handler的post方法</h2><p>先看一下源码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Causes the Runnable r to be added to the message queue.</div><div class="line"> * The runnable will be run on the thread to which this handler is </div><div class="line"> * attached. </div><div class="line"> *  </div><div class="line"> * @param r The Runnable that will be executed.</div><div class="line"> * </div><div class="line"> * @return Returns true if the Runnable was successfully placed in to the </div><div class="line"> *         message queue.  Returns false on failure, usually because the</div><div class="line"> *         looper processing the message queue is exiting.</div><div class="line"> */</div><div class="line">public final boolean post(Runnable r)</div><div class="line">&#123;</div><div class="line">   return  sendMessageDelayed(getPostMessage(r), 0);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>调用了sendMessageDelayed，然后通过getPostMessage(r)把runable转换成了消息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private static Message getPostMessage(Runnable r) &#123;</div><div class="line">       Message m = Message.obtain();</div><div class="line">       m.callback = r;</div><div class="line">       return m;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>直接把Runable传送给handler<br>具体实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">new Thread(new Runnable() &#123;</div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        handler.post(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">            //在这里进行UI操作</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;).start();</div></pre></td></tr></table></figure></p>
+<h2 id="View的post方法"><a href="#View的post方法" class="headerlink" title="View的post方法"></a>View的post方法</h2><p>源码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public boolean post(Runnable action) &#123;</div><div class="line">    final AttachInfo attachInfo = mAttachInfo;</div><div class="line">    if (attachInfo != null) &#123;</div><div class="line">        return attachInfo.mHandler.post(action);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>直接是调用了handler的post</p>
+<h2 id="Activity的runOnUiThread-方法"><a href="#Activity的runOnUiThread-方法" class="headerlink" title="Activity的runOnUiThread()方法"></a>Activity的runOnUiThread()方法</h2><p>源码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public final void runOnUiThread(Runnable action) &#123;</div><div class="line">    if (Thread.currentThread() != mUiThread) &#123;</div><div class="line">        mHandler.post(action);</div><div class="line">    &#125; else &#123;</div><div class="line">        action.run();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>同样是调用了Handler的post</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>子线程中更新UI，最根本的是Handler消息机制，但是代码需要写的有点多，其他的几个方法根本上都是基于Handler消息机制的，所以以后再子线程中更新UI可以有选择的选取最合适的一个。</p>
 
       
 
@@ -262,7 +264,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/06/how-to-see-android-source/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/06/update-ui-in-subthread/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,11 +278,15 @@
   
 <nav id="article-nav">
   
-  
-    <a href="/2017/04/03/iNovel/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">四天做一个Android小说更新提醒APP#i·Novel#</div>
-      <i class="icon-circle-right"></i>
+    <a href="/2017/03/27/Create-a-git-server/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          在Linux新建Git服务器
+        
+      </div>
     </a>
+  
   
 </nav>
 
